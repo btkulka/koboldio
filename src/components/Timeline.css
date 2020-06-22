@@ -1,0 +1,26 @@
+.timeline-wrapper {
+    flex: 1;
+    min-height: 300px;
+    width: 100%;
+}
+
+#current-position {
+    transition: all .2s ease-in-out;
+    transform-origin: 50% 8%;
+}
+
+#current-position:hover {
+    transform: scale(1.4);
+}
+
+.event-name {
+    fill: white;
+    font-family: 'Aliquam';
+    font: normal 32px sans-serif;
+}
+
+.event-details {
+    fill: white;
+    font-family: 'Aliquam';
+    font: normal 24px sans-serif;
+}

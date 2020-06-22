@@ -1,0 +1,50 @@
+.koboldio-modal-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    font-family: 'Aliquam';
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    letter-spacing: 4px;
+    padding: 8px;
+    background-color: 'rgba(255,255,255, 0.11);';
+    height: 8%;
+}
+
+.koboldio-modal-body {
+    padding: 16px;
+    background-color: 'rgba(255,255,255, 0.11);';
+    height: 82%;
+}
+
+.koboldio-modal-body > .header {
+    font-family: 'Aliquam';
+    font-weight: 200;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+
+.kb-icon-btn:hover {
+    cursor: pointer;
+    color: #ffe09f;
+}
+
+.kb-text-btn {
+    font-size: 10px;
+    padding: 4px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.kb-text-btn:hover {
+    background-color: rgba(255,255,255,0.11);
+    cursor: pointer;
+    color: #ffe09f;
+}

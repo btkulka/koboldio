@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  background-color: black;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@font-face {
+  font-family: 'Caeldera';
+  font-style: normal;
+  font-weight: 200;
+  src: url('./assets/fonts/Caeldera.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'LightTfb';
+  font-style: normal;
+  font-weight: 100;
+  src: url('./assets/fonts/LightTfb.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'Leoscar';
+  font-style: 'normal';
+  font-weight: 100;
+  src: url('./assets/fonts/Leoscar.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'Cosmic Love';
+  font-style: 'normal';
+  font-weight: 100;
+  src: url('./assets/fonts/CosmicLove.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'Aliquam';
+  font-style: 'normal';
+  font-weight: normal;
+  src: url('./assets/fonts/Aliquam.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'Aliquam';
+  font-style: 'normal';
+  font-weight: lighter;
+  src: url('./assets/fonts/AliquamUltralight.ttf') format('truetype')
+}

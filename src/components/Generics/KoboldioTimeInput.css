@@ -1,0 +1,41 @@
+.wrapper {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+}
+
+.digit-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+}
+
+.digit-wrapper > label {
+    font-family: 'Aliquam';
+    font-size: 10px;
+}
+
+.digit-input {
+    font-family: 'Leoscar';
+    background-color: rgba(0,0,0,0);
+    color: white;
+    font-size:32px;
+    text-align: center;
+    width: 60px;
+    height: 40px;
+    border: 0px;
+    border-radius: 8px;
+}
+
+.digit-input:hover {
+    background-color: rgba(255,255,255,0.11);
+}
+
+.digit-input:focus {
+    background-color: rgba(255,255,255,0.11);
+}

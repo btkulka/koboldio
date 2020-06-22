@@ -1,0 +1,23 @@
+.page-header {
+    width: 100%;
+    min-height: 10%;
+}
+
+.content {
+    padding: 32px;
+    color: white;
+    padding: 32px;
+}
+
+.content > .title {
+    font-family: 'Leoscar';
+    font-size: 32px;
+    letter-spacing: 4px;
+}
+
+.content > .subtitle {
+    font-family: 'Aliquam';
+    font-size: 16px;
+    font-weight: lighter;
+    letter-spacing: 2px;
+}

@@ -1,0 +1,10 @@
+.App {
+  background-color: 'black';
+  color: 'white';
+}
+
+.dashboard-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
