@@ -1,15 +1,8 @@
-import { CHANGE_LOCATION, LOAD_LOCATIONS } from "../types";
+import { CREATE_STARTING_LOCATION } from "../types";
 
-export function loadLocations(locations){
+export function createStartingLocation(location) {
     return {
-        type: LOAD_LOCATIONS,
-        payload: locations
-    };
-}
-
-export function changeLocation(location){
-    return {
-        type: CHANGE_LOCATION,
+        type: CREATE_STARTING_LOCATION,
         payload: location
     };
 }

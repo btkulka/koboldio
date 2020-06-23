@@ -7,17 +7,29 @@
     padding: 32px;
     color: white;
     padding: 32px;
+    display: flex;
+    flex-direction: row;
 }
 
-.content > .title {
+.logo-box {
+    flex: 0.2;
+}
+
+.logo-box > .title {
     font-family: 'Leoscar';
     font-size: 32px;
     letter-spacing: 4px;
 }
 
-.content > .subtitle {
+.logo-box > .subtitle {
     font-family: 'Aliquam';
     font-size: 16px;
     font-weight: lighter;
     letter-spacing: 2px;
+}
+
+.alert-box {
+    display: flex;
+    align-items: center;
+    flex: 0.8;
 }

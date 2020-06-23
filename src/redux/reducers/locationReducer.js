@@ -1,13 +1,21 @@
-import { BASE_LOCATION } from "../../constants/Locations";
-import { LOAD_LOCATIONS, CHANGE_LOCATION } from "../types";
+import { 
+    LOAD_LOCATIONS, 
+    CHANGE_LOCATION, 
+    CREATE_STARTING_LOCATION 
+} from "../types";
 
 const initialState = {
-    currentLocation: BASE_LOCATION,
+    currentLocation: undefined,
     locations: []
 };
 
 export default function(state = initialState, action) {
-    if (action.type === LOAD_LOCATIONS) {
+    if (action.type === CREATE_STARTING_LOCATION){
+        let newState = Object.assign({}, state);
+        newState.currentLocation = action.payload;
+        newState.locations.push(action.payload);
+        return newState;
+    } else if (action.type === LOAD_LOCATIONS) {
         let newState = Object.assign({}, state);
         newState.locations = action.payload;
         return newState;

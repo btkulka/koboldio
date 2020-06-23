@@ -1,4 +1,54 @@
-.koboldio-modal-title {
+.kb-alert {
+    border-radius: 8px;
+    padding: 8px;
+    font-family: 'Aliquam';
+    font-weight: bolder;
+    font-size: 14px;
+    justify-content: center;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    letter-spacing: 3px;
+}
+
+.kb-alert > .message-box {
+    flex: 0.9;
+}
+
+.kb-alert > .close-button {
+    flex: 0.1;
+}
+
+.kb-icon-btn:hover {
+    cursor: pointer;
+    color: #ffe09f;
+}
+
+.kb-input {
+    background-color: rgba(0,0,0,0);
+    border: 0;
+    border-bottom: 1px solid white;
+    padding: 8px;
+    font-family: 'Aliquam';
+    font-size: 16px;
+    letter-spacing: 3px;
+    min-width: 85%;
+    border-radius: 8px;
+    color: white;
+}
+
+.kb-input:hover {
+    background-color: rgba(255,255,255,0.11);
+    cursor: pointer;
+}
+
+.kb-input:focus {
+    outline: none;
+    box-shadow: 0 0 3px 2px rgba(173, 216, 230, 0.55);
+    background-color: rgba(255,255,255,0.11);
+}
+
+.kb-modal-title {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -11,26 +61,84 @@
     letter-spacing: 4px;
     padding: 8px;
     background-color: 'rgba(255,255,255, 0.11);';
-    height: 8%;
+    flex: 0.08
 }
 
-.koboldio-modal-body {
+.kb-modal-body {
     padding: 16px;
     background-color: 'rgba(255,255,255, 0.11);';
-    height: 82%;
+    flex: 0.9;
+    min-height: 300px;
 }
 
-.koboldio-modal-body > .header {
+.kb-modal-tile {
+    flex: 1;
+    width: 100%;
+}
+
+.kb-select {
+    background-color: rgba(0,0,0,0);
+    border: 0;
+    border-bottom: 1px solid white;
+    padding: 8px;
     font-family: 'Aliquam';
-    font-weight: 200;
-    color: white;
+    letter-spacing: 3px;
     font-size: 16px;
-    margin-bottom: 16px;
+    min-width: 85%;
+    border-radius: 8px;
+    color: white;
+    min-width: 85%;
 }
 
-.kb-icon-btn:hover {
+.kb-select:hover {
+    background-color: rgba(255,255,255,0.11);
     cursor: pointer;
-    color: #ffe09f;
+}
+
+.kb-select:focus {
+    outline: none;
+    box-shadow: 0 0 3px 2px rgba(173, 216, 230, 0.55);
+    background-color: rgba(255,255,255,0.11);
+}
+
+.kb-select-item {
+    color: white;
+    background-color: black;
+    font-family: 'Aliquam';
+}
+
+.kb-select-item:hover {
+    background-color: rgba(173, 216, 230, 0.55);
+}
+
+
+.kb-table {
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+    font-family: 'Aliquam';
+}
+
+.kb-table > .kb-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 4px;
+    flex: 1;
+}
+
+.kb-table > .kb-row:first-child {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bolder;
+    border-bottom: 1px solid white;
+}
+
+.kb-table > .kb-row > .kb-col {
+    padding: 4px;
+    flex: 1;
 }
 
 .kb-text-btn {

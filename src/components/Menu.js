@@ -3,9 +3,10 @@ import './Menu.css';
 import KoboldioModal from './Generics/KoboldioModal';
 import { connect } from 'react-redux';
 import { loadFiles } from '../redux/actions/menuActions';
+import { showAlert } from '../redux/actions/alertsActions';
 import { resetClock, loadClockState } from '../redux/actions/clockActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import CalendarManager from './Calendar/CalendarManager';
+import { ALERT_TYPES } from '../constants/AlertConstants';
 
 class Menu extends Component {
     constructor(props){
@@ -27,7 +28,7 @@ class Menu extends Component {
 
     async _openLoadFileSelection(){
         let files;
-        await fetch('http://localhost:8080/saves')
+        await fetch('http://localhost:3401/saves')
             .then(response => response.json())
             .then(data => {
                 files = data;
@@ -40,10 +41,11 @@ class Menu extends Component {
     }
 
     async _save(){
+        debugger;
         let file = this._clockToSaveFile();
         if(file.id){
 
-            fetch(`http://localhost:8080/saves/${file.id}`,
+            fetch(`http://localhost:3401/saves/${file.id}`,
             {
                 method: 'PUT',
                 headers: {
@@ -53,11 +55,14 @@ class Menu extends Component {
             })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
+                this.props.showAlert({
+                    type: ALERT_TYPES.Success,
+                    message: `'${file.campaignName}' saved.`
+                });
             });;
         } else {
             delete file.id;
-            await fetch('http://localhost:8080/saves',
+            await fetch('http://localhost:3401/saves',
             {
                 method: 'POST',
                 headers: {
@@ -67,7 +72,10 @@ class Menu extends Component {
             })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data);
+                this.props.showAlert({
+                    type: ALERT_TYPES.Success,
+                    message: `'${file.campaignName}' saved.`
+                });
             });
         }
     }
@@ -200,21 +208,6 @@ class Menu extends Component {
                         </KoboldioModal>
                     </div>
                     <div className="menu-set">
-                        <div className="menu-option" onClick={() => {
-                            this.setState({
-                                isManagingCalendar: true
-                            });
-                        }}>
-                            Calendar
-                            <CalendarManager
-                                visible={this.state.isManagingCalendar}
-                                onHide={(visible) => {
-                                    this.setState({
-                                        isManagingCalendar: visible
-                                    });
-                                }}
-                            />
-                        </div>
                         <div className="menu-option">
                             Config
                         </div>
@@ -234,7 +227,8 @@ function mapDispatchToProps(dispatch) {
     return {
         loadFiles: (files) => dispatch(loadFiles(files)),
         resetClock: () => dispatch(resetClock()),
-        loadGameFile: (file) => dispatch(loadClockState(file))
+        loadGameFile: (file) => dispatch(loadClockState(file)),
+        showAlert: (alert) => dispatch(showAlert(alert))
     };
 }
 

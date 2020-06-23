@@ -1,0 +1,51 @@
+{
+  "saves": [
+    {
+      "id": 1,
+      "campaignName": "The Ghosts of Saltmarsh",
+      "elapsedTime": 14000,
+      "elapsedWorldTime": 3632500,
+      "y": 40,
+      "month": 3,
+      "d": 3,
+      "h": 16,
+      "m": 0,
+      "s": 32,
+      "ms": 500,
+      "campaignDay": 3,
+      "mode": "Game Time"
+    },
+    {
+      "id": 7,
+      "campaignName": "Testooine",
+      "elapsedTime": 31016000,
+      "elapsedWorldTime": 286308500,
+      "y": 40,
+      "month": 3,
+      "d": 4,
+      "h": 19,
+      "m": 31,
+      "s": 48,
+      "ms": 500,
+      "campaignDay": 4,
+      "mode": "Game Time"
+    }
+  ],
+  "locations": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "name": "Saltmarsh",
+      "biome": "Coast",
+      "clockId": 7,
+      "id": 4
+    }
+  ]
+}

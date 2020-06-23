@@ -10,6 +10,10 @@ export const CHANGE_TITLE = "CHANGE_TITLE";
 export const LOAD_FILES = "LOAD_FILES";
 
 // Location Actions
+export const CREATE_STARTING_LOCATION = "CREATE_STARTING_LOCATION";
 export const LOAD_LOCATIONS = "LOAD_LOCATIONS";
 export const ADD_LOCATION = "ADD_LOCATION";
 export const CHANGE_LOCATION = "CHANGE_LOCATION";
+
+// Alert Actions
+export const SHOW_ALERT = "SHOW_ALERT";

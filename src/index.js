@@ -5,9 +5,14 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import koboldioReducer from './redux/reducers/koboldioReducer';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { clockMiddleware } from './redux/middleware/clockMiddleware';
+import { locationsMiddleware } from './redux/middleware/locationsMiddleware';
 
-const store = createStore(koboldioReducer);
+const middleware = applyMiddleware(
+  clockMiddleware, locationsMiddleware
+);
+const store = createStore(koboldioReducer, middleware);
 
 ReactDOM.render(
   <React.StrictMode>
