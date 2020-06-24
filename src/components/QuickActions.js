@@ -18,7 +18,8 @@ class QuickActions extends Component {
 
         this.state = {
             isPassingTime: false,
-            timeToPass: new ClockTime()
+            isTraveling: false,
+            timeToPass: {}
         };
 
         // members
@@ -44,8 +45,8 @@ class QuickActions extends Component {
     }
 
     _travel() {
-        this.props.manipulateTime({
-
+        this.setState({
+            isTraveling: true
         });
     }
 
@@ -65,6 +66,7 @@ class QuickActions extends Component {
     }
 
     render(){
+
         return(
             <div className="quick-actions-main">
                 <div className="action-bubble" onClick={this._shortRest} title="Short Rest">
@@ -73,9 +75,20 @@ class QuickActions extends Component {
                 <div className="action-bubble" onClick={this._longRest} title="Long Rest">
                     <img alt="long-rest" src={LongRestIcon} className="action-icon" />
                 </div>
-                <div className="action-bubble" title="Travel">
-                    <img alt="travel" src={TravelIcon} className="action-icon"/>
-                </div>
+                {
+                    this.props.location.currentLocation &&
+                    <div 
+                        className="action-bubble"
+                        title="Travel"
+                        onClick={() => {
+                            this.setState({
+                                isTraveling: true
+                            });
+                        }}
+                    >
+                        <img alt="travel" src={TravelIcon} className="action-icon"/>
+                    </div>
+                }
                 <div className="action-bubble" title="Pass Time" onClick={() => {
                     this.setState({
                         isPassingTime: true
@@ -111,13 +124,31 @@ class QuickActions extends Component {
                         Pass Time
                     </div>
                 </KoboldioModal>
+                <KoboldioModal
+                    title="Travel to"
+                    visible={this.state.isTraveling}
+                    onRequestClose={() => {
+                        this.setState({
+                            isTraveling: false
+                        });
+                    }}
+                >
+                    <div className="header">
+                        Roads leading from <b>{ this.props.location?.currentLocation?.name }</b>
+                    </div>
+                    <div
+                        className="kb-text-btn"
+                    >
+
+                    </div>
+                </KoboldioModal>
             </div>
         )
     }
 }
 
 const mapStateToProps = (state) => ({
-    
+    location: state.location
 });
 
 function mapDispatchToProps(dispatch) {

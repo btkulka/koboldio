@@ -19,11 +19,11 @@ export default class KoboldioTimeInput extends Component {
                 <div className="digit-wrapper">
                     <input 
                         className="digit-input"
-                        pattern="[0-9]*"
+                        pattern="[0-9\b]*"
                         maxLength="2"
-                        value={this.props.value.y} 
+                        value={this.props.value.y}
                         onChange={(e) => {
-                            let value = e.target.value === '' ? 0 : Number(e.target.value)
+                            let value = e.target.value === '' ? '' : Number(e.target.value)
                             this.props.value.y = value;
                             this._updateTime();
                         }} 
@@ -35,7 +35,7 @@ export default class KoboldioTimeInput extends Component {
                 <div className="digit-wrapper">
                     <input 
                         className="digit-input" 
-                        pattern="[0-9]*"
+                        pattern="[0-9\b]*"
                         maxLength="2"
                         value={this.props.value.month} 
                         onChange={(e) => {
@@ -51,7 +51,7 @@ export default class KoboldioTimeInput extends Component {
                 <div className="digit-wrapper">
                     <input 
                         className="digit-input" 
-                        pattern="[0-9]*"
+                        pattern="[0-9\b]*"
                         maxLength="2"
                         value={this.props.value.d} 
                         onChange={(e) => {
@@ -67,7 +67,7 @@ export default class KoboldioTimeInput extends Component {
                 <div className="digit-wrapper">
                         <input 
                             className="digit-input" 
-                            pattern="[0-9]*"
+                            pattern="[0-9\b]*"
                             maxLength="2"
                             value={this.props.value.h} 
                             onChange={(e) => {
@@ -83,7 +83,7 @@ export default class KoboldioTimeInput extends Component {
                 <div className="digit-wrapper">
                         <input 
                             className="digit-input" 
-                            pattern="[0-9]*"
+                            pattern="[0-9\b]*"
                             maxLength="2"
                             value={this.props.value.m} 
                             onChange={(e) => {
@@ -99,7 +99,7 @@ export default class KoboldioTimeInput extends Component {
                 <div className="digit-wrapper">
                     <input 
                         className="digit-input" 
-                        pattern="[0-9]*"
+                        pattern="[0-9\b]*"
                         maxLength="2"
                         value={this.props.value.s} 
                         onChange={(e) => {
@@ -115,7 +115,7 @@ export default class KoboldioTimeInput extends Component {
                 <div className="digit-wrapper">
                     <input 
                         className="digit-input" 
-                        pattern="[0-9]*"
+                        pattern="[0-9\b]*"
                         maxLength="2"
                         value={this.props.value.ms} 
                         onChange={(e) => {

@@ -1,7 +1,76 @@
+h1 {
+    font-family: 'Lyons Serif';
+    font-weight: normal;
+    font-style: italic;
+    letter-spacing: 6px;
+    font-size: 48px;
+}
+
+.kb-accordion {
+    padding: 16px;
+    border-left: 1px ridge white;
+    display: flex;
+    flex-direction: row;
+}
+
+.kb-accordion-panel {
+    padding: 8px;
+    border-right: 1px ridge white;
+    flex: 0.5;
+}
+
+.kb-accordion-panel-listing {
+    display: flex;
+    flex-direction: row;
+    padding: 8px;
+    border-right: 1px ridge white;
+    justify-content: flex-start;
+    font-family: 'Lyons Serif';
+    font-weight: 100;
+    letter-spacing: 2px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.kb-accordion-panel .label {
+    font-style: italic;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    flex: 0.15;
+}
+
+.kb-accordion-panel .value {
+    flex: 0.8;
+    font-size: 24px;
+}
+
+.kb-accordion-panel-option {
+    display: flex;
+    flex-direction: row;
+    padding: 8px;
+    align-items: center;
+    font-family: 'Lyons Serif';
+    font-size: 24px;
+    letter-spacing: 3px;
+    font-weight: bolder;
+    border-radius: 8px;
+}
+
+.kb-accordion-panel-option.selected {
+    background-color: rgba(255,255,255, 0.22);
+}
+
+
+.kb-accordion-panel-option:hover {
+    background-color: rgba(255,255,255,0.11);
+    cursor: pointer;
+}
+
 .kb-alert {
     border-radius: 8px;
     padding: 8px;
-    font-family: 'Aliquam';
+    font-family: 'Lyons Serif';
     font-weight: bolder;
     font-size: 14px;
     justify-content: center;
@@ -29,7 +98,7 @@
     border: 0;
     border-bottom: 1px solid white;
     padding: 8px;
-    font-family: 'Aliquam';
+    font-family: 'Lyons Serif';
     font-size: 16px;
     letter-spacing: 3px;
     min-width: 85%;
@@ -54,7 +123,7 @@
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    font-family: 'Aliquam';
+    font-family: 'Lyons Serif';
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -81,7 +150,7 @@
     border: 0;
     border-bottom: 1px solid white;
     padding: 8px;
-    font-family: 'Aliquam';
+    font-family: 'Lyons Serif';
     letter-spacing: 3px;
     font-size: 16px;
     min-width: 85%;
@@ -104,7 +173,7 @@
 .kb-select-item {
     color: white;
     background-color: black;
-    font-family: 'Aliquam';
+    font-family: 'Lyons Serif';
 }
 
 .kb-select-item:hover {
@@ -116,7 +185,7 @@
     display: flex;
     flex-direction: column;
     padding: 4px;
-    font-family: 'Aliquam';
+    font-family: 'Lyons Serif';
 }
 
 .kb-table > .kb-row {

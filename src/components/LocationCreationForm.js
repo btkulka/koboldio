@@ -7,7 +7,7 @@ export default class LocationCreationForm extends Component {
 
         this.state = {
             locationName: undefined,
-            biome: undefined
+            biome: "Plains"     // default
         };
 
         // internal methods

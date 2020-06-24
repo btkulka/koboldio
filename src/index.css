@@ -43,15 +43,25 @@ code {
 }
 
 @font-face {
-  font-family: 'Aliquam';
-  font-style: 'normal';
-  font-weight: normal;
-  src: url('./assets/fonts/Aliquam.ttf') format('truetype')
+  font-family: 'Lyons Serif';
+  font-weight: 100;
+  src: url('./assets/fonts/LyonsSerif.ttf') format('truetype')
 }
 
 @font-face {
-  font-family: 'Aliquam';
-  font-style: 'normal';
-  font-weight: lighter;
-  src: url('./assets/fonts/AliquamUltralight.ttf') format('truetype')
+  font-family: 'Lyons Serif';
+  font-weight: bold;
+  src: url('./assets/fonts/LyonsSerifBold.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'Lyons Serif';
+  font-weight: bolder;
+  src: url('./assets/fonts/LyonsSerifBlack.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'Lyons Serif';
+  font-style: italic;
+  src: url('./assets/fonts/LyonsSerifItalic.ttf') format('truetype')
 }

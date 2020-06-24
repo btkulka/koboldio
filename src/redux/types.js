@@ -1,3 +1,6 @@
+// App Actions
+export const CHANGE_APP_MODE = "CHANGE_APP_MODE";
+
 // Clock Actions
 export const MANIPULATE_TIME = "MANIPULATE_TIME";
 export const CHANGE_TIME_MODE = "CHANGE_TIME_MODE";

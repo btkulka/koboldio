@@ -49,6 +49,9 @@ class WeatherDashboard extends Component {
         .then((data) => {
             location.id = data.id;
             this.props.createStartingLocation(location);
+            this.setState({
+                isLocationCreatorVisible: false
+            });
         });
     }
 

@@ -3,32 +3,34 @@
     {
       "id": 1,
       "campaignName": "The Ghosts of Saltmarsh",
-      "elapsedTime": 14000,
-      "elapsedWorldTime": 3632500,
+      "elapsedTime": 174000,
+      "elapsedWorldTime": 4032500,
       "y": 40,
       "month": 3,
       "d": 3,
       "h": 16,
-      "m": 0,
-      "s": 32,
+      "m": 7,
+      "s": 12,
       "ms": 500,
       "campaignDay": 3,
-      "mode": "Game Time"
+      "mode": "Game Time",
+      "currentLocationId": 5
     },
     {
       "id": 7,
       "campaignName": "Testooine",
-      "elapsedTime": 31016000,
-      "elapsedWorldTime": 286308500,
+      "elapsedTime": 31604000,
+      "elapsedWorldTime": 287778500,
       "y": 40,
       "month": 3,
       "d": 4,
       "h": 19,
-      "m": 31,
-      "s": 48,
+      "m": 56,
+      "s": 18,
       "ms": 500,
       "campaignDay": 4,
-      "mode": "Game Time"
+      "mode": "Game Time",
+      "currentLocationId": 9
     }
   ],
   "locations": [
@@ -46,6 +48,33 @@
       "biome": "Coast",
       "clockId": 7,
       "id": 4
+    },
+    {
+      "name": "Saltmarsh",
+      "biome": "Coast",
+      "clockId": 1,
+      "id": 5
+    },
+    {
+      "name": "Coolsville",
+      "clockId": 7,
+      "id": 6
+    },
+    {
+      "name": "Coolsville",
+      "clockId": 7,
+      "id": 7
+    },
+    {
+      "name": "Coolsville",
+      "clockId": 7,
+      "id": 8
+    },
+    {
+      "name": "Coolsville",
+      "biome": "Plains",
+      "clockId": 7,
+      "id": 9
     }
   ]
 }

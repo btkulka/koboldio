@@ -32,7 +32,7 @@ class Header extends Component {
                             theTexasWave
                         </div>
                     </div>
-                    <div class="alert-box">
+                    <div className="alert-box">
                         <KoboldioAlert
                             visibilityToggle={this.state.alertToggle}
                             type={this.props.alerts.type}

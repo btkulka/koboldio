@@ -21,7 +21,15 @@ export default function(state = initialState, action) {
         return newState;
     } else if (action.type === CHANGE_LOCATION) {
         let newState = Object.assign({}, state);
-        newState.currentLocation = action.payload;
+        if (action.payload === undefined) {
+            newState.currentLocation = undefined;
+        } else {
+            newState.locations.forEach((location) => {
+                if (location.id === action.payload) {
+                    newState.currentLocation = location;
+                }
+            });
+        }
         return newState;
     } else {
         return state;

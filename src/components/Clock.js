@@ -69,7 +69,9 @@ class Clock extends Component {
     // =================================
 
     componentDidMount(){
+        // Start clock
         this._tick();
+
         document.addEventListener("keydown", this._handleKeys);
         document.addEventListener("mousedown", this._handleClick);
     }
@@ -179,77 +181,81 @@ class Clock extends Component {
             clockDigitIndex += 1;
         })
 
-        return(
-            <div className="app">
-                <div className="clock-main">
-                    <div className="content-panel">
-                        {
-                            !this.state.isEditingTitle &&
-                            <div className="clock-title" onClick={() => {
-                                this.setState({
-                                    isEditingTitle: true
-                                }, () => {
-                                    this.titleInput.current.select();
-                                });
-                            }}>
-                                { this.props.clock.campaignName }
-                            </div>
-                        }
-                        {
-                            this.state.isEditingTitle &&
-                            <input
-                                ref={this.titleInput}
-                                className="clock-title-input" 
-                                type="text" 
-                                name="title" 
-                                value={this.state.editTitle} 
-                                placeholder="enter campaign name..."
-                                onChange={(e) => this._editTitle(e.target.value)}
-                            />
-                        }
-                        <div className="header">
-                            <p>Day 
-                                <b> { 
-                                    this.props.clock.campaignDay 
-                                }</b> | 
-                                <b> { 
-                                    this._calendarNamesManager.getWeekday(this.props.clock.campaignDay % 7)
-                                }</b>, the 
-                                <b> { 
-                                    this._getOrdinal(this.props.clock.worldTime.d) 
-                                }</b> day of 
-                                <b> { 
-                                    this._calendarNamesManager.getMonth(this.props.clock.worldTime.month)
-                                }</b>
-                            </p>
-                        </div>
-                        <div className="clock-wrapper">
+        if (this.props.visible) {
+            return(
+                <div className="app">
+                    <div className="clock-main">
+                        <div className="content-panel">
                             {
-                                clockDigits
+                                !this.state.isEditingTitle &&
+                                <div className="clock-title" onClick={() => {
+                                    this.setState({
+                                        isEditingTitle: true
+                                    }, () => {
+                                        this.titleInput.current.select();
+                                    });
+                                }}>
+                                    { this.props.clock.campaignName }
+                                </div>
                             }
+                            {
+                                this.state.isEditingTitle &&
+                                <input
+                                    ref={this.titleInput}
+                                    className="clock-title-input" 
+                                    type="text" 
+                                    name="title" 
+                                    value={this.state.editTitle} 
+                                    placeholder="enter campaign name..."
+                                    onChange={(e) => this._editTitle(e.target.value)}
+                                />
+                            }
+                            <div className="header">
+                                <p>Day 
+                                    <b> { 
+                                        this.props.clock.campaignDay 
+                                    }</b> | 
+                                    <b> { 
+                                        this._calendarNamesManager.getWeekday(this.props.clock.campaignDay % 7)
+                                    }</b>, the 
+                                    <b> { 
+                                        this._getOrdinal(this.props.clock.worldTime.d) 
+                                    }</b> day of 
+                                    <b> { 
+                                        this._calendarNamesManager.getMonth(this.props.clock.worldTime.month)
+                                    }</b>
+                                </p>
+                            </div>
+                            <div className="clock-wrapper">
+                                {
+                                    clockDigits
+                                }
+                            </div>
+                            <div className="footer">
+                                <p>
+                                    <b> {
+                                        this._calendarNamesManager.getSeasonByMonth(this.props.clock.worldTime.month)
+                                    }</b>, Year
+                                    <b> {
+                                        this.props.clock.worldTime.y
+                                    }</b>
+                                </p>
+                            </div>
+                            <ModeSelector
+                                title='Time mode'
+                                onSelectionMade={this.onModeChanged}
+                                modes={this.timeModes}
+                            />
+                            <QuickActions
+                                manipulateTime={this.manipulateTime}
+                            />
                         </div>
-                        <div className="footer">
-                            <p>
-                                <b> {
-                                    this._calendarNamesManager.getSeasonByMonth(this.props.clock.worldTime.month)
-                                }</b>, Year
-                                <b> {
-                                    this.props.clock.worldTime.y
-                                }</b>
-                            </p>
-                        </div>
-                        <ModeSelector
-                            title='Time mode'
-                            onSelectionMade={this.onModeChanged}
-                            modes={this.timeModes}
-                        />
-                        <QuickActions
-                            manipulateTime={this.manipulateTime}
-                        />
                     </div>
                 </div>
-            </div>
-        );
+            );
+        } else {
+            return null;
+        }
     }
 }
 

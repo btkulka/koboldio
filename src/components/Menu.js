@@ -4,9 +4,12 @@ import KoboldioModal from './Generics/KoboldioModal';
 import { connect } from 'react-redux';
 import { loadFiles } from '../redux/actions/menuActions';
 import { showAlert } from '../redux/actions/alertsActions';
+import { loadLocations } from '../redux/actions/locationActions';
 import { resetClock, loadClockState } from '../redux/actions/clockActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ALERT_TYPES } from '../constants/AlertConstants';
+import { changeAppMode } from '../redux/actions/appActions';
+import { APP_MODES } from '../constants/AppModes';
 
 class Menu extends Component {
     constructor(props){
@@ -82,6 +85,7 @@ class Menu extends Component {
 
     _clockToSaveFile(){
         const file = Object.assign({}, this.props.clock);
+        const location = Object.assign({}, this.props.location.currentLocation)
         let save = {
             id: file.id,
             campaignName: file.campaignName,
@@ -95,33 +99,39 @@ class Menu extends Component {
             s: file.worldTime.s,
             ms: file.worldTime.ms,
             campaignDay: file.campaignDay,
-            mode: file.mode
+            mode: file.mode,
+            currentLocationId: location.id
         };
 
         return save;
     }
 
-    _loadFile(file) {
+    async _loadFile(file) {
+        await fetch(`http://localhost:3401/locations?clockId=${file.id}`)
+            .then(response => response.json())
+            .then((data) => {
+                this.props.loadLocations(data);
+            })
+        this.props.loadGameFile({
+            id: file.id,
+            currentLocationId: file.currentLocationId,
+            campaignName: file.campaignName,
+            elapsedTime: file.elapsedTime,
+            elapsedWorldTime: file.elapsedWorldTime,
+            worldTime: {
+                y: file.y,
+                month: file.month,
+                d: file.d,
+                h: file.h,
+                m: file.m,
+                s: file.s,
+                ms: file.ms
+            },
+            campaignDay: file.campaignDay,
+            mode: file.mode
+        });
         this.setState({
             isSelectingLoad: false
-        }, () => {
-            this.props.loadGameFile({
-                id: file.id,
-                campaignName: file.campaignName,
-                elapsedTime: file.elapsedTime,
-                elapsedWorldTime: file.elapsedWorldTime,
-                worldTime: {
-                    y: file.y,
-                    month: file.month,
-                    d: file.d,
-                    h: file.h,
-                    m: file.m,
-                    s: file.s,
-                    ms: file.ms
-                },
-                campaignDay: file.campaignDay,
-                mode: file.mode
-            });
         });
     }
 
@@ -208,6 +218,25 @@ class Menu extends Component {
                         </KoboldioModal>
                     </div>
                     <div className="menu-set">
+                        <div 
+                            className="menu-option"
+                            onClick={() => {
+                                this.props.changeAppMode(APP_MODES.Clock);
+                            }}
+                        >
+                            Clock
+                        </div>
+                        {
+                            this.props.clock.id > 0 &&  // game has been saved
+                            <div
+                                className="menu-option"
+                                onClick={() => {
+                                    this.props.changeAppMode(APP_MODES.LocationManager)
+                                }}
+                            >
+                                Locations
+                            </div>
+                        }
                         <div className="menu-option">
                             Config
                         </div>
@@ -220,7 +249,8 @@ class Menu extends Component {
 
 const mapStateToProps = (state) => ({
     menu: state.menu,
-    clock: state.clock
+    clock: state.clock,
+    location: state.location
 });
 
 function mapDispatchToProps(dispatch) {
@@ -228,7 +258,9 @@ function mapDispatchToProps(dispatch) {
         loadFiles: (files) => dispatch(loadFiles(files)),
         resetClock: () => dispatch(resetClock()),
         loadGameFile: (file) => dispatch(loadClockState(file)),
-        showAlert: (alert) => dispatch(showAlert(alert))
+        showAlert: (alert) => dispatch(showAlert(alert)),
+        loadLocations: (locations) => dispatch(loadLocations(locations)),
+        changeAppMode: (mode) => dispatch(changeAppMode(mode))
     };
 }
 

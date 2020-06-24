@@ -27,7 +27,7 @@
 }
 
 .menu-option {
-    font-family: 'Aliquam';
+    font-family: 'Lyons Serif';
     font-weight: 200;
     color: white;
     display: flex;
@@ -73,7 +73,7 @@
 }
 
 .load-file-record > .info-wrapper > .title {
-    font-family: 'Aliquam';
+    font-family: 'Lyons Serif';
     color: white;
     font-size: 14px;
     letter-spacing: 2px;
@@ -82,7 +82,7 @@
 }
 
 .load-file-record > .info-wrapper > .subtitle {
-    font-family: 'Aliquam';
+    font-family: 'Lyons Serif';
     color: white;
     font-weight: lighter;
     font-size: 10px;
