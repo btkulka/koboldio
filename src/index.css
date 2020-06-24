@@ -65,3 +65,14 @@ code {
   font-style: italic;
   src: url('./assets/fonts/LyonsSerifItalic.ttf') format('truetype')
 }
+
+@font-face {
+  font-family: 'Aliquam';
+  font-weight: lighter;
+  src: url('./assets/fonts/AliquamUltralight.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'Goudy';
+  src: url('./assets/fonts/Goudymedieval-K0Rl.ttf') format('truetype')
+}

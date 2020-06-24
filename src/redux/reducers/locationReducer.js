@@ -1,7 +1,8 @@
 import { 
     LOAD_LOCATIONS, 
     CHANGE_LOCATION, 
-    CREATE_STARTING_LOCATION 
+    CREATE_STARTING_LOCATION, 
+    ADD_LOCATION
 } from "../types";
 
 const initialState = {
@@ -23,6 +24,11 @@ export default function(state = initialState, action) {
         let newState = Object.assign({}, state);
         if (action.payload === undefined) {
             newState.currentLocation = undefined;
+        } else if (action.type === ADD_LOCATION) {
+            let newState = Object.assign({}, state);
+            newState.locations.push(action.payload);
+            debugger;
+            return newState;
         } else {
             newState.locations.forEach((location) => {
                 if (location.id === action.payload) {

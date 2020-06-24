@@ -27,7 +27,13 @@ export default class KoboldioAccordionFolder extends Component {
 
     _makeSelection(selection, index) {
         let selectionPath = this.state.selectionPath.slice();
-        selectionPath.splice(index, selectionPath.length - index, selection);
+        if (selection === this.state.selectionPath[index]) {
+            // deselect
+            selectionPath.splice(index, selectionPath.length - index);
+        } else {
+            // select
+            selectionPath.splice(index, selectionPath.length - index, selection);
+        }
         this.setState({
             selectionPath: selectionPath,
             currentLevel: index + 1
@@ -56,7 +62,7 @@ export default class KoboldioAccordionFolder extends Component {
                 optionClassName = "kb-accordion-panel-option";
             }
             
-            let label = String(idx).padStart(3, 0) + '.';
+            let label = String(idx + 1).padStart(3, 0) + '.';
             options.push(
                 <div
                     className={optionClassName}

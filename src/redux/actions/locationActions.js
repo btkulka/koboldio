@@ -1,4 +1,4 @@
-import { CREATE_STARTING_LOCATION, LOAD_LOCATIONS } from "../types";
+import { CREATE_STARTING_LOCATION, LOAD_LOCATIONS, ADD_LOCATION } from "../types";
 
 export function createStartingLocation(location) {
     return {
@@ -11,5 +11,12 @@ export function loadLocations(locations) {
     return {
         type: LOAD_LOCATIONS,
         payload: locations
+    };
+}
+
+export function addLocation(location) {
+    return {
+        type: ADD_LOCATION,
+        payload: location
     };
 }

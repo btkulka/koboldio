@@ -19,17 +19,17 @@
     {
       "id": 7,
       "campaignName": "Testooine",
-      "elapsedTime": 31604000,
-      "elapsedWorldTime": 287778500,
+      "elapsedTime": 31858000,
+      "elapsedWorldTime": 288407500,
       "y": 40,
       "month": 3,
       "d": 4,
-      "h": 19,
-      "m": 56,
-      "s": 18,
+      "h": 20,
+      "m": 6,
+      "s": 47,
       "ms": 500,
       "campaignDay": 4,
-      "mode": "Game Time",
+      "mode": "Real Time",
       "currentLocationId": 9
     }
   ],
@@ -75,6 +75,42 @@
       "biome": "Plains",
       "clockId": 7,
       "id": 9
+    },
+    {
+      "name": "Cloud Peaks",
+      "biome": "Mountain",
+      "clockId": 1,
+      "id": 10
+    },
+    {
+      "name": "Seaton",
+      "biome": "Coast",
+      "clockId": 1,
+      "id": 11
+    },
+    {
+      "name": "Burle",
+      "biome": "Forest",
+      "clockId": 1,
+      "id": 12
+    },
+    {
+      "name": "The Hool Marshes",
+      "biome": "Marsh",
+      "clockId": 1,
+      "id": 13
+    },
+    {
+      "name": "The Dreadwood",
+      "biome": "Forest",
+      "clockId": 1,
+      "id": 14
+    },
+    {
+      "name": "The Azure Sea",
+      "biome": "Ocean",
+      "clockId": 1,
+      "id": 15
     }
   ]
 }

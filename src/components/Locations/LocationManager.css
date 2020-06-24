@@ -11,4 +11,11 @@
 
 .title-box {
     padding: 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.title-box div {
+    flex: 0.5;
 }

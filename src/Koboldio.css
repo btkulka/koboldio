@@ -1,9 +1,8 @@
 h1 {
-    font-family: 'Lyons Serif';
-    font-weight: normal;
-    font-style: italic;
+    font-family: 'Goudy';
+    font-weight: bolder;
     letter-spacing: 6px;
-    font-size: 48px;
+    font-size: 3em;
 }
 
 .kb-accordion {
@@ -14,7 +13,6 @@ h1 {
 }
 
 .kb-accordion-panel {
-    padding: 8px;
     border-right: 1px ridge white;
     flex: 0.5;
 }
@@ -29,12 +27,12 @@ h1 {
     font-weight: 100;
     letter-spacing: 2px;
     border-radius: 8px;
-    margin-bottom: 12px;
+    margin: 12px;
 }
 
 .kb-accordion-panel .label {
     font-style: italic;
-    font-size: 20px;
+    font-size: 0.8em;
     display: flex;
     align-items: center;
     flex: 0.15;
@@ -42,7 +40,13 @@ h1 {
 
 .kb-accordion-panel .value {
     flex: 0.8;
-    font-size: 24px;
+    font-size: 1em;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.kb-accordion-panel-listing .value:hover {
+    background-color: rgba( 255, 255, 255, 0.11);
 }
 
 .kb-accordion-panel-option {
@@ -55,6 +59,8 @@ h1 {
     letter-spacing: 3px;
     font-weight: bolder;
     border-radius: 8px;
+    border-right: 1px ridge white;
+    margin: 12px;
 }
 
 .kb-accordion-panel-option.selected {
@@ -211,13 +217,17 @@ h1 {
 }
 
 .kb-text-btn {
-    font-size: 10px;
+    font-family: 'Lyons Serif';
+    font-style: italic;
+    font-size: 0.8em;
+    letter-spacing: 1px;
     padding: 4px;
     border-radius: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    height: 100%;
 }
 
 .kb-text-btn:hover {
