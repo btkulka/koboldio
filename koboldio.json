@@ -3,34 +3,146 @@
     {
       "id": 1,
       "campaignName": "The Ghosts of Saltmarsh",
-      "elapsedTime": 174000,
-      "elapsedWorldTime": 4032500,
-      "y": 40,
-      "month": 3,
-      "d": 3,
-      "h": 16,
-      "m": 7,
-      "s": 12,
-      "ms": 500,
-      "campaignDay": 3,
-      "mode": "Game Time",
-      "currentLocationId": 5
-    },
-    {
-      "id": 7,
-      "campaignName": "Testooine",
-      "elapsedTime": 31858000,
-      "elapsedWorldTime": 288407500,
+      "elapsedTime": 11140000,
+      "elapsedWorldTime": 59440000,
       "y": 40,
       "month": 3,
       "d": 4,
-      "h": 20,
-      "m": 6,
-      "s": 47,
-      "ms": 500,
+      "h": 7,
+      "m": 30,
+      "s": 40,
+      "ms": 0,
       "campaignDay": 4,
-      "mode": "Real Time",
-      "currentLocationId": 9
+      "mode": "Pause",
+      "currentLocationId": 24,
+      "party": [
+        {
+          "name": "Ghaul",
+          "race": "Goliath",
+          "sex": "Male",
+          "age": 30,
+          "class": "Barbarian",
+          "inParty": true,
+          "clockId": 1,
+          "id": 5,
+          "type": "character",
+          "hunger": 100
+        },
+        {
+          "name": "Kagrenac Wraithguard",
+          "race": "Dwarf",
+          "sex": "Male",
+          "age": 40,
+          "class": "Cleric",
+          "inParty": true,
+          "clockId": 1,
+          "id": 6,
+          "type": "character",
+          "hunger": 100
+        },
+        {
+          "name": "Luce Leblanc",
+          "race": "HalfElf",
+          "sex": "Male",
+          "age": 22,
+          "class": "Rogue",
+          "inParty": true,
+          "clockId": 1,
+          "id": 7,
+          "type": "character",
+          "hunger": 100
+        },
+        {
+          "name": "Raoden Arlene",
+          "race": "HalfElf",
+          "sex": "Male",
+          "age": 35,
+          "class": "Sorcerer",
+          "inParty": true,
+          "clockId": 1,
+          "id": 8,
+          "type": "character",
+          "hunger": 100
+        },
+        {
+          "name": "Pende Eptapende",
+          "race": "HalfElf",
+          "sex": "Male",
+          "age": 40,
+          "class": "Bard",
+          "inParty": true,
+          "clockId": 1,
+          "id": 9,
+          "type": "character",
+          "hunger": 100
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "campaignName": "Test2ine",
+      "elapsedTime": 12615000,
+      "elapsedWorldTime": 60317500,
+      "y": 40,
+      "month": 3,
+      "d": 2,
+      "h": 4,
+      "m": 45,
+      "s": 17,
+      "ms": 500,
+      "campaignDay": 2,
+      "mode": "Game Time",
+      "currentLocationId": 30,
+      "party": [
+        {
+          "name": "Gozark",
+          "race": "HalfOrc",
+          "sex": "Male",
+          "age": 42,
+          "class": "Barbarian",
+          "inParty": true,
+          "clockId": 2,
+          "id": 1,
+          "type": "character",
+          "hunger": 57.18749999999599
+        },
+        {
+          "name": "Melrose the Wise",
+          "race": "Gnome",
+          "sex": "Male",
+          "age": 33,
+          "class": "Wizard",
+          "inParty": true,
+          "clockId": 2,
+          "id": 2,
+          "type": "character",
+          "hunger": 57.18749999999599
+        },
+        {
+          "name": "Nethrali Rosewater",
+          "race": "Elf",
+          "sex": "Female",
+          "age": 22,
+          "class": "Bard",
+          "inParty": true,
+          "clockId": 2,
+          "id": 3,
+          "type": "character",
+          "hunger": 57.18749999999599
+        },
+        {
+          "name": "Brock Boldmove",
+          "race": "Human",
+          "sex": "Male",
+          "age": 44,
+          "class": "Fighter",
+          "inParty": true,
+          "clockId": 2,
+          "id": 4,
+          "type": "character",
+          "hunger": 57.18749999999599
+        }
+      ]
     }
   ],
   "locations": [
@@ -44,73 +156,364 @@
       "id": 3
     },
     {
-      "name": "Saltmarsh",
-      "biome": "Coast",
+      "name": "Port Benjamin",
+      "biome": "Forest",
       "clockId": 7,
-      "id": 4
+      "roads": [],
+      "id": 18
     },
     {
       "name": "Saltmarsh",
       "biome": "Coast",
       "clockId": 1,
-      "id": 5
-    },
-    {
-      "name": "Coolsville",
-      "clockId": 7,
-      "id": 6
-    },
-    {
-      "name": "Coolsville",
-      "clockId": 7,
-      "id": 7
-    },
-    {
-      "name": "Coolsville",
-      "clockId": 7,
-      "id": 8
-    },
-    {
-      "name": "Coolsville",
-      "biome": "Plains",
-      "clockId": 7,
-      "id": 9
-    },
-    {
-      "name": "Cloud Peaks",
-      "biome": "Mountain",
-      "clockId": 1,
-      "id": 10
+      "roads": [],
+      "id": 22
     },
     {
       "name": "Seaton",
       "biome": "Coast",
       "clockId": 1,
-      "id": 11
+      "roads": [],
+      "id": 23
+    },
+    {
+      "name": "Cloud Peaks",
+      "biome": "Mountain",
+      "clockId": 1,
+      "roads": [],
+      "id": 24
     },
     {
       "name": "Burle",
       "biome": "Forest",
       "clockId": 1,
-      "id": 12
+      "roads": [],
+      "id": 25
     },
     {
       "name": "The Hool Marshes",
       "biome": "Marsh",
       "clockId": 1,
-      "id": 13
+      "roads": [],
+      "id": 26
     },
     {
-      "name": "The Dreadwood",
-      "biome": "Forest",
-      "clockId": 1,
-      "id": 14
+      "name": "Kulkapolis",
+      "biome": "Plains",
+      "clockId": 7,
+      "roads": [],
+      "id": 27
     },
     {
       "name": "The Azure Sea",
       "biome": "Ocean",
       "clockId": 1,
-      "id": 15
+      "roads": [],
+      "id": 28
+    },
+    {
+      "name": "Glennwood",
+      "biome": "Forest",
+      "clockId": 2,
+      "roads": [],
+      "id": 29
+    },
+    {
+      "name": "Melldon",
+      "biome": "Plains",
+      "clockId": 2,
+      "roads": [],
+      "id": 30
+    }
+  ],
+  "roads": [
+    {
+      "name": "dirt path",
+      "location1Id": 18,
+      "location2Id": 19,
+      "travelTime": "12",
+      "clockId": 7,
+      "id": 1
+    },
+    {
+      "name": "Grand Coastal Road",
+      "location1Id": 22,
+      "location2Id": 23,
+      "travelTime": "6.68",
+      "clockId": 1,
+      "id": 2
+    },
+    {
+      "name": "Dreaded Path",
+      "location1Id": 24,
+      "location2Id": 23,
+      "travelTime": "5.01",
+      "clockId": 1,
+      "id": 3
+    },
+    {
+      "name": "Mountain Pass",
+      "location1Id": 24,
+      "location2Id": 22,
+      "travelTime": "3.90",
+      "clockId": 1,
+      "id": 4
+    },
+    {
+      "name": "Kingfisher Trail",
+      "location1Id": 22,
+      "location2Id": 25,
+      "travelTime": "8.69",
+      "clockId": 1,
+      "id": 5
+    },
+    {
+      "name": "\"Swamp Ass\" Road",
+      "location1Id": 22,
+      "location2Id": 26,
+      "travelTime": "6.5",
+      "clockId": 1,
+      "id": 6
+    },
+    {
+      "name": "Saltmarsh Port",
+      "location1Id": 28,
+      "location2Id": 22,
+      "travelTime": "0.25",
+      "clockId": 1,
+      "id": 7
+    },
+    {
+      "name": "Seaton Port",
+      "location1Id": 28,
+      "location2Id": 23,
+      "travelTime": "0.5",
+      "clockId": 1,
+      "id": 8
+    },
+    {
+      "name": "Main Street",
+      "location1Id": 29,
+      "location2Id": 30,
+      "travelTime": "3",
+      "clockId": 2,
+      "id": 9
+    }
+  ],
+  "characters": [
+    {
+      "name": "Gozark",
+      "race": "HalfOrc",
+      "sex": "Male",
+      "age": 42,
+      "class": "Barbarian",
+      "inParty": true,
+      "clockId": 2,
+      "id": 1
+    },
+    {
+      "name": "Melrose the Wise",
+      "race": "Gnome",
+      "sex": "Male",
+      "age": 33,
+      "class": "Wizard",
+      "inParty": true,
+      "clockId": 2,
+      "id": 2
+    },
+    {
+      "name": "Nethrali Rosewater",
+      "race": "Elf",
+      "sex": "Female",
+      "age": 22,
+      "class": "Bard",
+      "inParty": true,
+      "clockId": 2,
+      "id": 3
+    },
+    {
+      "name": "Brock Boldmove",
+      "race": "Human",
+      "sex": "Male",
+      "age": 44,
+      "class": "Fighter",
+      "inParty": true,
+      "clockId": 2,
+      "id": 4
+    },
+    {
+      "name": "Ghaul",
+      "race": "Goliath",
+      "sex": "Male",
+      "age": 30,
+      "class": "Barbarian",
+      "inParty": true,
+      "clockId": 1,
+      "id": 5
+    },
+    {
+      "name": "Kagrenac Wraithguard",
+      "race": "Dwarf",
+      "sex": "Male",
+      "age": 40,
+      "class": "Cleric",
+      "inParty": true,
+      "clockId": 1,
+      "id": 6
+    },
+    {
+      "name": "Luce Leblanc",
+      "race": "HalfElf",
+      "sex": "Male",
+      "age": 22,
+      "class": "Rogue",
+      "inParty": true,
+      "clockId": 1,
+      "id": 7
+    },
+    {
+      "name": "Raoden Arlene",
+      "race": "HalfElf",
+      "sex": "Male",
+      "age": 35,
+      "class": "Sorcerer",
+      "inParty": true,
+      "clockId": 1,
+      "id": 8
+    },
+    {
+      "name": "Pende Eptapende",
+      "race": "HalfElf",
+      "sex": "Male",
+      "age": 40,
+      "class": "Bard",
+      "inParty": true,
+      "clockId": 1,
+      "id": 9
+    }
+  ],
+  "events": [
+    {
+      "name": "The Ticking Watch (a)",
+      "eventType": "Single",
+      "locationId": null,
+      "description": "Ghaul's watch burns him in the middle of the night. Refer to [The Ticking Watch] on Roll20.",
+      "dateType": "Campaign Day",
+      "isAllDay": false,
+      "date": {
+        "ms": 0,
+        "s": 0,
+        "m": 0,
+        "h": 0,
+        "d": 0,
+        "month": 0,
+        "y": 0
+      },
+      "length": 1,
+      "id": 1
+    },
+    {
+      "clockId": 1,
+      "name": "The Ticking Watch (a)",
+      "eventType": "Single",
+      "description": "Ghaul's watch glows so hot that it burns him in the middle of the night. Refer to [The Ticking Watch] on Roll20.",
+      "dateType": "Campaign Day",
+      "isAllDay": false,
+      "date": {
+        "y": 40,
+        "month": 3,
+        "d": 24,
+        "h": 0,
+        "m": 0,
+        "s": 2,
+        "ms": 500
+      },
+      "length": 1,
+      "campaignDay": 23,
+      "id": 2
+    },
+    {
+      "clockId": 1,
+      "name": "Saltmarsh City Council Meeting",
+      "eventType": "Recurring",
+      "locationId": 22,
+      "description": "The Saltmarsh City Council meets weekly to discuss town matters. It is an open forum.",
+      "dateType": "Campaign Day",
+      "isAllDay": false,
+      "date": {
+        "y": 40,
+        "month": 3,
+        "d": 9,
+        "h": 10,
+        "m": 0,
+        "s": 2,
+        "ms": 500
+      },
+      "length": 1,
+      "campaignDay": 8,
+      "recurStep": 7,
+      "recurMeasure": "days",
+      "id": 3
+    },
+    {
+      "clockId": 1,
+      "name": "The Ticking Watch (b)",
+      "eventType": "Single",
+      "description": "Ghaul's watch burns so hot that it breaks, although ticking can still be heard from inside. Refer to [The Ticking Watch] on Roll20.",
+      "dateType": "Campaign Day",
+      "isAllDay": false,
+      "date": {
+        "y": 40,
+        "month": 4,
+        "d": 20,
+        "h": 0,
+        "m": 0,
+        "s": 2,
+        "ms": 500
+      },
+      "length": 1,
+      "campaignDay": 47,
+      "id": 4
+    },
+    {
+      "clockId": 1,
+      "name": "The Ticking Watch (c)",
+      "eventType": "Single",
+      "description": "Ghaul's watch explodes, damaging anybody nearby. His lycanthropy returns to him. Refer to [The Ticking Watch] on Roll20.",
+      "dateType": "Campaign Day",
+      "isAllDay": false,
+      "date": {
+        "y": 40,
+        "month": 5,
+        "d": 16,
+        "h": 0,
+        "m": 0,
+        "s": 2,
+        "ms": 500
+      },
+      "length": 1,
+      "campaignDay": 71,
+      "id": 5
+    },
+    {
+      "clockId": 1,
+      "name": "The Guardian Angel",
+      "eventType": "Single",
+      "description": "The young dwarf whose father, Gormammi, died in Cloud Peaks returns to Raoden (who encouraged him) shortly after his 18th birthday to pay him thanks.",
+      "dateType": "Campaign Day",
+      "isAllDay": false,
+      "date": {
+        "y": 55,
+        "month": 5,
+        "d": 5,
+        "h": 12,
+        "m": 0,
+        "s": 2,
+        "ms": 500
+      },
+      "length": 1,
+      "campaignDay": 5100,
+      "id": 6
     }
   ]
 }

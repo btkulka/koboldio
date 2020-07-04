@@ -6,7 +6,7 @@ export default class ModeSelector extends Component {
         super(props);
 
         this.state = {
-            mode: props.defaultMode ? props.defaultMode : props.modes[0]
+            mode: props.modes[props.defaultMode] ? props.modes[props.defaultMode] : props.modes[0]
         }
 
         this._makeSelection = this._makeSelection.bind(this);

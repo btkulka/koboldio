@@ -26,17 +26,11 @@ class Clock extends Component {
 
         // internal methods
         this._tick = this._tick.bind(this);
-        this._editTitle = this._editTitle.bind(this);
-        this._handleKeys = this._handleKeys.bind(this);
-        this._handleClick = this._handleClick.bind(this);
         
         // public methods
         this.onModeChanged = this.onModeChanged.bind(this);
         this.manipulateTime = this.manipulateTime.bind(this);
         this.load = this.load.bind(this);
-
-        // references
-        this.titleInput = React.createRef();
     }
 
     // Getters/Setters
@@ -71,14 +65,6 @@ class Clock extends Component {
     componentDidMount(){
         // Start clock
         this._tick();
-
-        document.addEventListener("keydown", this._handleKeys);
-        document.addEventListener("mousedown", this._handleClick);
-    }
-
-    componentWillUnmount(){
-        document.removeEventListener("keydown", this._handleKeys);
-        document.removeEventListener("mousedown", this._handleClick);
     }
 
     // Public methods
@@ -99,20 +85,6 @@ class Clock extends Component {
     // Internal Methods
     // =================================
 
-    _getOrdinal(n) {
-        const lastDigit = n % 10;
-        switch(lastDigit){
-            case 1:
-                return n + 'st';
-            case 2:
-                return n + 'nd';
-            case 3:
-                return n + 'rd';
-            default:
-                return n + 'th';
-        }
-    }
-    
     _tick(tick = 0, ) {
         switch(this.props.clock.mode){
             case TIME_MODES.RealTime:
@@ -131,38 +103,6 @@ class Clock extends Component {
 
         this.props.clockTick(tick);
         setTimeout(this._tick, 1000);
-    }
-
-    _editTitle(title){
-        this.setState({
-            editTitle: title
-        });
-    }
-
-    _handleKeys(e) {
-        const confirmKeys = [13]; // return
-        if (this.state.isEditingTitle) {
-            if (confirmKeys.includes(e.keyCode)) {  
-                // submit title change
-                this.setState({
-                    isEditingTitle: false
-                }, () => {
-                    this.props.changeTitle(this.state.editTitle);
-                });
-            }
-        }
-    }
-
-    _handleClick(e) {
-        if (this.state.isEditingTitle) {
-            if (this.titleInput && !this.titleInput.current.contains(e.target)) {
-                this.titleInput.current.blur();
-                // cancel title change
-                this.setState({
-                    isEditingTitle: false
-                });
-            }
-        }
     }
 
     // Render
@@ -186,30 +126,12 @@ class Clock extends Component {
                 <div className="app">
                     <div className="clock-main">
                         <div className="content-panel">
-                            {
-                                !this.state.isEditingTitle &&
-                                <div className="clock-title" onClick={() => {
-                                    this.setState({
-                                        isEditingTitle: true
-                                    }, () => {
-                                        this.titleInput.current.select();
-                                    });
-                                }}>
-                                    { this.props.clock.campaignName }
-                                </div>
-                            }
-                            {
-                                this.state.isEditingTitle &&
-                                <input
-                                    ref={this.titleInput}
-                                    className="clock-title-input" 
-                                    type="text" 
-                                    name="title" 
-                                    value={this.state.editTitle} 
-                                    placeholder="enter campaign name..."
-                                    onChange={(e) => this._editTitle(e.target.value)}
-                                />
-                            }
+                            <ModeSelector
+                                title='Time mode'
+                                defaultMode={this.props.app.mode}
+                                onSelectionMade={this.onModeChanged}
+                                modes={this.timeModes}
+                            />
                             <div className="header">
                                 <p>Day 
                                     <b> { 
@@ -219,7 +141,7 @@ class Clock extends Component {
                                         this._calendarNamesManager.getWeekday(this.props.clock.campaignDay % 7)
                                     }</b>, the 
                                     <b> { 
-                                        this._getOrdinal(this.props.clock.worldTime.d) 
+                                        this._timeManager.getOrdinal(this.props.clock.worldTime.d) 
                                     }</b> day of 
                                     <b> { 
                                         this._calendarNamesManager.getMonth(this.props.clock.worldTime.month)
@@ -241,11 +163,6 @@ class Clock extends Component {
                                     }</b>
                                 </p>
                             </div>
-                            <ModeSelector
-                                title='Time mode'
-                                onSelectionMade={this.onModeChanged}
-                                modes={this.timeModes}
-                            />
                             <QuickActions
                                 manipulateTime={this.manipulateTime}
                             />
@@ -260,6 +177,7 @@ class Clock extends Component {
 }
 
 const mapStateToProps = (state) => ({
+    app: state.app,
     clock: state.clock
 });
 

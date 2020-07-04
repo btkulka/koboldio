@@ -6,7 +6,6 @@
 .content {
     padding: 32px;
     color: white;
-    padding: 32px;
     display: flex;
     flex-direction: row;
 }
@@ -22,14 +21,38 @@
 }
 
 .logo-box > .subtitle {
-    font-family: 'Lyons Serif';
+    font-family: 'Spectral';
     font-size: 16px;
     font-weight: lighter;
     letter-spacing: 2px;
 }
 
-.alert-box {
+.clock-title {
+    font-family: 'Spectral';
+    font-weight: medium;
+    text-align: center;
     display: flex;
-    align-items: center;
-    flex: 0.8;
+    justify-content: center;
+    padding: 8px 4px 8px 4px;
+    font-size: 3em;
+    border-radius: 32px;
+    letter-spacing: 2px;
+}
+
+.clock-title-input {
+    font-family: 'Spectral';
+    font-weight: medium;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 8px 4px 8px 4px;
+    font-size: 3em;
+    border-radius: 32px;
+    letter-spacing: 2px;
+    background-color: #121212;
+}
+
+.clock-title:hover {
+    background-color: rgba(255,255,255,0.11);
+    cursor: pointer;
 }

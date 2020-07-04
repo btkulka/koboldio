@@ -4,7 +4,8 @@ import {
     CLOCK_TICK, 
     RESET_CLOCK, 
     LOAD_CLOCK_STATE, 
-    CHANGE_TITLE 
+    CHANGE_TITLE,
+    SET_CLOCK_ID
 } from '../types';
 
 export function manipulateTime(timeChange) {
@@ -46,5 +47,12 @@ export function changeTitle(title) {
     return {
         type: CHANGE_TITLE,
         payload: title
+    };
+}
+
+export function setClockId(clockId) {
+    return {
+        type: SET_CLOCK_ID,
+        payload: clockId
     };
 }

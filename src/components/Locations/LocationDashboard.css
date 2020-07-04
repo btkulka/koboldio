@@ -1,0 +1,109 @@
+.location-dash-wrapper {
+    padding: 16px;
+    max-width: 300px;
+    min-width: 150px;
+}
+
+.location-dash {
+    border-radius: 32px;
+    background-color: rgba(255,255,255,0.11);
+    border: 1px solid #c1c1c1;
+    display: flex;
+    flex-direction: column;
+    min-width: 225px;
+}
+
+.location-dash-tile {
+    padding: 32px;
+    flex-grow: 1;
+}
+
+.location-dash-tile > .header {
+    font-family: 'Spectral';
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    letter-spacing: 4px;
+}
+
+.location-dash-tile > .subheader {
+    font-family: 'Spectral';
+    color: white;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    letter-spacing: 2px;
+    border-radius: 8px;
+    border-bottom: 1px ridge white;
+    padding: 8px;
+}
+
+.location-dash-tile > .listing-pair {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Spectral';
+    padding: 8px 12px 8px 12px;
+}
+
+.location-dash-tile > .listing-pair > .key {
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.location-dash-tile > .listing-pair > .value {
+    font-size: 12px;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.location-dash-tile > .listing-pair > .value:hover {
+    cursor: cell;
+    background-color: rgba(255,255,255,0.11);
+    color: var(--info);
+}
+
+.modal-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    padding: 8px;
+}
+
+.travel-breadcrumbs {
+    display: flex;
+    flex-direction: row;
+    margin: 16px;
+    justify-content: space-between;
+    min-width: 70%;
+}
+
+.travel-breadcrumbs > .breadcrumb {
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 16px;
+}
+
+.travel-breadcrumbs .label {
+    font-size: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.travel-breadcrumbs .icon {
+    padding: 10px;
+}
+

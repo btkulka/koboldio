@@ -4,12 +4,16 @@ import KoboldioModal from './Generics/KoboldioModal';
 import { connect } from 'react-redux';
 import { loadFiles } from '../redux/actions/menuActions';
 import { showAlert } from '../redux/actions/alertsActions';
-import { loadLocations } from '../redux/actions/locationActions';
-import { resetClock, loadClockState } from '../redux/actions/clockActions';
+import { loadLocations, loadRoads, connectRoad } from '../redux/actions/locationActions';
+import { resetClock, loadClockState, setClockId } from '../redux/actions/clockActions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ALERT_TYPES } from '../constants/AlertConstants';
 import { changeAppMode } from '../redux/actions/appActions';
 import { APP_MODES } from '../constants/AppModes';
+import { loadCharacters, setPartyState } from '../redux/actions/characterActions';
+import KoboldioDropdownMenu from './Generics/KoboldioDropdownMenu';
+import CalendarClient from '../clients/CalendarClient';
+import { loadEvents, setEvents } from '../redux/actions/calendarActions';
 
 class Menu extends Component {
     constructor(props){
@@ -18,15 +22,38 @@ class Menu extends Component {
         this.state = {
             isSelectingLoad: false,
             isManagingCalendar: false,
-            loadFiles: []
+            loadFiles: [],
+            resourceDropdown: {
+                isOpen: false,
+                width: 0,
+                coordinates: {
+                    x: 0,
+                    y: 0
+                }
+            },
+            fileDropdown: {
+                isOpen: false,
+                width: 0,
+                coordinates: {
+                    x: 0,
+                    y: 0
+                }
+            }
+
         };
 
+        // members
+        this.calendarClient = new CalendarClient();
+
+        // internal methods
         this._openLoadFileSelection = this._openLoadFileSelection.bind(this);
         this._save = this._save.bind(this);
         this._clockToSaveFile = this._clockToSaveFile.bind(this);
         this._loadFile = this._loadFile.bind(this);
         this._hideLoad = this._hideLoad.bind(this);
-        
+        this._toggleResourceDropdownMenu = this._toggleResourceDropdownMenu.bind(this);
+        this._toggleFileDropdownMenu = this._toggleFileDropdownMenu.bind(this);
+        this._makeDropdownSelection = this._makeDropdownSelection.bind(this);
     }
 
     async _openLoadFileSelection(){
@@ -44,7 +71,6 @@ class Menu extends Component {
     }
 
     async _save(){
-        debugger;
         let file = this._clockToSaveFile();
         if(file.id){
 
@@ -75,6 +101,7 @@ class Menu extends Component {
             })
             .then((response) => response.json())
             .then((data) => {
+                this.props.setClockId(data);
                 this.props.showAlert({
                     type: ALERT_TYPES.Success,
                     message: `'${file.campaignName}' saved.`
@@ -84,6 +111,7 @@ class Menu extends Component {
     }
 
     _clockToSaveFile(){
+        debugger;
         const file = Object.assign({}, this.props.clock);
         const location = Object.assign({}, this.props.location.currentLocation)
         let save = {
@@ -100,18 +128,53 @@ class Menu extends Component {
             ms: file.worldTime.ms,
             campaignDay: file.campaignDay,
             mode: file.mode,
-            currentLocationId: location.id
+            currentLocationId: location.id,
+            party: this.props.character.party
         };
 
         return save;
     }
 
     async _loadFile(file) {
+
+        // Load locations
         await fetch(`http://localhost:3401/locations?clockId=${file.id}`)
             .then(response => response.json())
-            .then((data) => {
-                this.props.loadLocations(data);
-            })
+            .then((locations) => {
+                this.props.loadLocations(locations);
+            });
+
+        // Load roads
+        await fetch(`http://localhost:3401/roads?clockId=${file.id}`)
+            .then(response => response.json())
+            .then((roads) => {
+                this.props.loadRoads(roads);
+                roads.forEach((road) => {
+                    this.props.connectRoad(road);
+                });
+            });
+        
+        // Load characters
+        await fetch(`http://localhost:3401/characters?clockId=${file.id}`)
+            .then(response => response.json())
+            .then((characters) => {
+                if (characters !== {}) {
+                    this.props.loadCharacters(characters);
+                }
+            });
+        
+        this.calendarClient.getAllEvents(file.id)
+            .then((events) => {
+                // clear
+                this.props.setEvents({
+                    events: [],
+                    recurringEvents: []
+                });
+                // load
+                this.props.loadEvents(events);
+            });
+
+        // Load state
         this.props.loadGameFile({
             id: file.id,
             currentLocationId: file.currentLocationId,
@@ -130,6 +193,10 @@ class Menu extends Component {
             campaignDay: file.campaignDay,
             mode: file.mode
         });
+
+        // Load party
+        this.props.setPartyState(file.party)
+
         this.setState({
             isSelectingLoad: false
         });
@@ -142,7 +209,7 @@ class Menu extends Component {
     }
 
     async _deleteFile(id) {
-        await fetch(`http://localhost:8080/saves/${id}`,
+        await fetch(`http://localhost:3401/saves/${id}`,
             {
                 method: 'DELETE',
                 headers: {
@@ -154,6 +221,59 @@ class Menu extends Component {
                 console.log(data);
                 this._openLoadFileSelection();
             });
+    }
+
+    _toggleResourceDropdownMenu(e) {
+        const coordinates = {
+            x: e.target.offsetLeft,
+            y: e.target.offsetTop + e.target.offsetHeight
+        };
+        this.setState({
+            fileDropdown: {
+                ...this.state.fileDropdown,
+                isOpen: false
+            },
+            resourceDropdown: {
+                coordinates: coordinates,
+                width: e.target.offsetWidth,
+                isOpen: !this.state.resourceDropdown.isOpen
+            }
+        });
+    }
+
+    _toggleFileDropdownMenu(e) {
+        const coordinates = {
+            x: e.target.offsetLeft,
+            y: e.target.offsetTop + e.target.offsetHeight
+        };
+        this.setState({
+            fileDropdown: {
+                coordinates: coordinates,
+                width: e.target.offsetWidth,
+                isOpen: !this.state.fileDropdown.isOpen
+            },
+            resourceDropdown: {
+                ...this.state.resourceDropdown,
+                isOpen: false
+            }
+        });
+    }
+
+    _makeDropdownSelection(callback = null) {
+        this.setState({
+            fileDropdown: {
+                ...this.state.fileDropdown,
+                isOpen: false
+            },
+            resourceDropdown: {
+                ...this.state.resourceDropdown,
+                isOpen: false
+            }
+        }, () => {
+            if (callback) {
+                callback();
+            }
+        });
     }
 
     render(){
@@ -196,51 +316,120 @@ class Menu extends Component {
         return(
             <div className="menu-wrapper">
                 <div className="menu-bar">
-                    <div className="menu-set">
-                        <div className="menu-option" onClick={this.props.resetClock}>
-                            New
-                        </div>
-                        <div className="menu-option" onClick={this._save}>
-                            Save
-                        </div>
-                        <div className="menu-option" onClick={this._openLoadFileSelection}>
-                            Load
-                        </div>
-                        <KoboldioModal
-                            onRequestClose={this._hideLoad}
-                            visible={this.state.isSelectingLoad}
-                            title="Load File"
-                        >
-                            {
-                                loadFiles.length > 0 &&
-                                loadFiles
-                            }
-                        </KoboldioModal>
+                    <div
+                        className="menu-option"
+                        onClick={() => {
+                            this.props.changeAppMode(APP_MODES.Clock)
+                        }}
+                    >
+                        <FontAwesomeIcon
+                            className="icon"
+                            icon="clock"
+                        />
                     </div>
-                    <div className="menu-set">
-                        <div 
-                            className="menu-option"
-                            onClick={() => {
-                                this.props.changeAppMode(APP_MODES.Clock);
-                            }}
+                    <div
+                        className={"menu-option " + (this.state.isFileDropdownOpen ? 'selected' : '')}
+                        onClick={this._toggleFileDropdownMenu}
+                    >
+                        File
+                    </div>
+                    {   this.props.clock.id &&  // game has been saved
+                        <div
+                            className={"menu-option " + (this.state.isResourceDropdownOpen ? 'selected' : '')}
+                            onClick={this._toggleResourceDropdownMenu}
                         >
-                            Clock
+                            Resources
                         </div>
+                    }
+                    <KoboldioModal
+                        onRequestClose={this._hideLoad}
+                        visible={this.state.isSelectingLoad}
+                        title="Load File"
+                    >
                         {
-                            this.props.clock.id > 0 &&  // game has been saved
+                            loadFiles.length > 0 &&
+                            loadFiles
+                        }
+                    </KoboldioModal>
+                    <KoboldioDropdownMenu
+                        isOpen={this.state.resourceDropdown.isOpen}
+                        coordinates={this.state.resourceDropdown.coordinates}
+                        width={this.state.resourceDropdown.width}
+                        options={[
                             <div
+                                key={"resource-dropdown-select-calendar"}
                                 className="menu-option"
                                 onClick={() => {
-                                    this.props.changeAppMode(APP_MODES.LocationManager)
+                                    this._makeDropdownSelection(
+                                        () => { this.props.changeAppMode(APP_MODES.CalendarManager); }
+                                    );
+                                }}
+                            >
+                                Calendar
+                            </div>,
+                            <div
+                                key={"resource-dropdown-select-characters"}
+                                className="menu-option"
+                                onClick={() => {
+                                    this._makeDropdownSelection(
+                                        () => { this.props.changeAppMode(APP_MODES.CharacterManager); }
+                                    );
+                                }}
+                            >
+                                Characters
+                            </div>,
+                            <div
+                                key={"resource-dropdown-select-location"}
+                                className="menu-option"
+                                onClick={() => {
+                                    this._makeDropdownSelection(
+                                        () => { this.props.changeAppMode(APP_MODES.LocationManager); }
+                                    );
                                 }}
                             >
                                 Locations
                             </div>
-                        }
-                        <div className="menu-option">
-                            Config
-                        </div>
-                    </div>
+                        ]}
+                    />
+                    <KoboldioDropdownMenu
+                        isOpen={this.state.fileDropdown.isOpen}
+                        coordinates={this.state.fileDropdown.coordinates}
+                        width={this.state.fileDropdown.width}
+                        options={[
+                            <div
+                                key={"file-dropdown-select-new"}
+                                className="menu-option"
+                                onClick={() => {
+                                    this._makeDropdownSelection(
+                                        this.props.resetClock
+                                    );
+                                }}
+                            >
+                                New
+                            </div>,
+                             <div
+                             key={"file-dropdown-select-save"}
+                                className="menu-option"
+                                onClick={() => {
+                                    this._makeDropdownSelection(
+                                        this._save
+                                    );
+                                }}
+                            >
+                                Save
+                            </div>,
+                            <div
+                                key={"file-dropdown-select-load"}
+                                className="menu-option"
+                                onClick={() => {
+                                    this._makeDropdownSelection(
+                                        this._openLoadFileSelection
+                                    );
+                                }}>
+                                Load
+                            </div>
+                        ]}
+                    />
                 </div>
             </div>
         )
@@ -250,7 +439,8 @@ class Menu extends Component {
 const mapStateToProps = (state) => ({
     menu: state.menu,
     clock: state.clock,
-    location: state.location
+    location: state.location,
+    character: state.character
 });
 
 function mapDispatchToProps(dispatch) {
@@ -260,7 +450,14 @@ function mapDispatchToProps(dispatch) {
         loadGameFile: (file) => dispatch(loadClockState(file)),
         showAlert: (alert) => dispatch(showAlert(alert)),
         loadLocations: (locations) => dispatch(loadLocations(locations)),
-        changeAppMode: (mode) => dispatch(changeAppMode(mode))
+        loadRoads: (roads) => dispatch(loadRoads(roads)),
+        changeAppMode: (mode) => dispatch(changeAppMode(mode)),
+        connectRoad: (road) => dispatch(connectRoad(road)),
+        loadCharacters: (characters) => dispatch(loadCharacters(characters)),
+        setPartyState: (party) => dispatch(setPartyState(party)),
+        setClockId: (clockId) => dispatch(setClockId(clockId)),
+        loadEvents: (events) => dispatch(loadEvents(events)),
+        setEvents: (events) => dispatch(setEvents(events))
     };
 }
 

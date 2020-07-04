@@ -8,14 +8,30 @@ export default class KoboldioModal extends Component {
         super(props);
 
         this.state = {
-            visible: false
+            visible: false,
+            height: 320,
+            width: 480,
+            top: 0,
+            left: 0
         };
     }
 
     componentDidUpdate(prevProps) {
         if(prevProps.visible !== this.props.visible) {
+            let innerHeight = 0;
+            if (Array.isArray(this.props.children)) {
+                this.props.children.forEach((child) => {
+                    innerHeight += child.clientHeight;
+                });
+            } else {
+                innerHeight = this.props.children.clientHeight;
+            }
+            innerHeight += 32;  // padding
             this.setState({
-                visible: this.props.visible
+                visible: this.props.visible,
+                height: innerHeight,
+                top: (window.screen.height / 4),
+                left: (window.screen.width / 4),
             });
         }
     }
@@ -35,10 +51,12 @@ export default class KoboldioModal extends Component {
             return(
                 <Draggable>
                     <Resizable
-                        style={modalStyles.main}
-                        defaultSize={{
-                            width: 480,
-                            height: 300
+                        style={{
+                            ...modalStyles.main,
+                            height: this.state.height,
+                            width: this.state.width,
+                            top: this.state.top,
+                            left: this.state.left
                         }}
                     >
                         <div className="kb-modal-title">

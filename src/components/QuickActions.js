@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './QuickActions.css';
-import ShortRestIcon from '../assets/imgs/short-rest-icon.png'
-import LongRestIcon from '../assets/imgs/long-rest-icon.png'
-import TimeIcon from '../assets/imgs/time-icon.png'
-import TravelIcon from '../assets/imgs/travel-icon.png'
+import ShortRestIcon from '../assets/imgs/short-rest-icon.png';
+import LongRestIcon from '../assets/imgs/long-rest-icon.png';
+import TimeIcon from '../assets/imgs/time-icon.png';
 import KoboldioModal from './Generics/KoboldioModal';
 import KoboldioTimeInput from './Generics/KoboldioTimeInput';
 import { connect } from 'react-redux';
@@ -44,12 +43,6 @@ class QuickActions extends Component {
         });
     }
 
-    _travel() {
-        this.setState({
-            isTraveling: true
-        });
-    }
-
     _updateTimeToPass(time) {
         this.setState({
             timeToPass: time
@@ -75,20 +68,6 @@ class QuickActions extends Component {
                 <div className="action-bubble" onClick={this._longRest} title="Long Rest">
                     <img alt="long-rest" src={LongRestIcon} className="action-icon" />
                 </div>
-                {
-                    this.props.location.currentLocation &&
-                    <div 
-                        className="action-bubble"
-                        title="Travel"
-                        onClick={() => {
-                            this.setState({
-                                isTraveling: true
-                            });
-                        }}
-                    >
-                        <img alt="travel" src={TravelIcon} className="action-icon"/>
-                    </div>
-                }
                 <div className="action-bubble" title="Pass Time" onClick={() => {
                     this.setState({
                         isPassingTime: true
@@ -122,24 +101,6 @@ class QuickActions extends Component {
                             icon="clock"
                         />
                         Pass Time
-                    </div>
-                </KoboldioModal>
-                <KoboldioModal
-                    title="Travel to"
-                    visible={this.state.isTraveling}
-                    onRequestClose={() => {
-                        this.setState({
-                            isTraveling: false
-                        });
-                    }}
-                >
-                    <div className="header">
-                        Roads leading from <b>{ this.props.location?.currentLocation?.name }</b>
-                    </div>
-                    <div
-                        className="kb-text-btn"
-                    >
-
                     </div>
                 </KoboldioModal>
             </div>

@@ -1,5 +1,13 @@
 import TIME_MODES from '../../constants/TimeModes';
-import { CLOCK_TICK, CHANGE_TIME_MODE, RESET_CLOCK, LOAD_CLOCK_STATE, CHANGE_TITLE } from '../types';
+import { 
+    CLOCK_TICK, 
+    CHANGE_TIME_MODE, 
+    RESET_CLOCK, 
+    LOAD_CLOCK_STATE, 
+    CHANGE_TITLE, 
+    SET_CLOCK_ID 
+} from '../types';
+import { CAMPAIGN_DAY_ONE } from '../../constants/EventConstants';
 
 // be sure to update blank game state in RESET_CLOCK as well
 const initialState = {
@@ -7,15 +15,7 @@ const initialState = {
     campaignName: 'untitled',
     elapsedTime: 0,
     elapsedWorldTime: 0,
-    worldTime: {
-        y: 40,
-        month: 3,
-        d: 1,
-        h: 12,
-        m: 0,
-        s: 0,
-        ms: 0
-    },
+    worldTime: CAMPAIGN_DAY_ONE,
     campaignDay: 1,
     mode: TIME_MODES.GameTime
 };
@@ -88,6 +88,11 @@ export default function(state = initialState, action) {
         let newState = Object.assign({}, state);
         newState.campaignName = action.payload;
         return newState;  
+    } else if (action.type === SET_CLOCK_ID) {
+        debugger;
+        let newState = Object.assign({}, state);
+        newState.id = action.payload;
+        return newState;
     } else {
         return state;
     }

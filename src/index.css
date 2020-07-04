@@ -2,6 +2,8 @@ body {
   margin: 0;
   background-color: black;
   color: white;
+  font-family: 'Spectral';
+  font-weight: 100;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -75,4 +77,47 @@ code {
 @font-face {
   font-family: 'Goudy';
   src: url('./assets/fonts/Goudymedieval-K0Rl.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'Spectral';
+  font-weight: 200;
+  src: url('./assets/fonts/Spectral/Spectral-ExtraLight.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'Spectral';
+  font-weight: 300;
+  src: url('./assets/fonts/Spectral/Spectral-Light.ttf') format('truetype')
+}
+
+
+@font-face {
+  font-family: 'Spectral';
+  font-weight: 400;
+  src: url('./assets/fonts/Spectral/Spectral-Regular.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'Spectral';
+  font-weight: 500;
+  src: url('./assets/fonts/Spectral/Spectral-Medium.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'Spectral';
+  font-weight: 600;
+  src: url('./assets/fonts/Spectral/Spectral-SemiBold.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'Spectral';
+  font-weight: 700;
+  src: url('./assets/fonts/Spectral/Spectral-Bold.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'Spectral';
+  font-weight: 800;
+  src: url('./assets/fonts/Spectral/Spectral-ExtraBold.ttf') format('truetype')
 }

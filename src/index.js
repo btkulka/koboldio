@@ -8,9 +8,12 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { clockMiddleware } from './redux/middleware/clockMiddleware';
 import { locationsMiddleware } from './redux/middleware/locationsMiddleware';
+import { appMiddleware } from './redux/middleware/appMiddleware';
+import { characterMiddleware } from './redux/middleware/characterMiddleware';
+import { calendarMiddleware } from './redux/middleware/calendarMiddleware';
 
 const middleware = applyMiddleware(
-  clockMiddleware, locationsMiddleware
+  clockMiddleware, locationsMiddleware, appMiddleware, characterMiddleware, calendarMiddleware
 );
 const store = createStore(koboldioReducer, middleware);
 

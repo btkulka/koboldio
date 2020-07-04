@@ -5,6 +5,8 @@ import calendarReducer from './calendarReducer';
 import locationReducer from './locationReducer';
 import alertsReducer from './alertsReducer';
 import appReducer from './appReducer';
+import weatherReducer from './weatherReducer';
+import characterReducer from './characterReducer';
 
 const koboldioReducer = combineReducers({
     app: appReducer,
@@ -12,7 +14,9 @@ const koboldioReducer = combineReducers({
     menu: menuReducer,
     calendar: calendarReducer,
     location: locationReducer,
-    alerts: alertsReducer
+    alerts: alertsReducer,
+    weather: weatherReducer,
+    character: characterReducer
 });
 
 export default koboldioReducer;

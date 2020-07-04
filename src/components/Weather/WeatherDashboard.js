@@ -38,6 +38,7 @@ class WeatherDashboard extends Component {
     async _createStartingLocation(location) {
         debugger;
         location.clockId = this.props.clock.id;
+        location.roads = [];
         fetch("http://localhost:3401/locations", {
             method: 'POST',
             body: JSON.stringify(location),
