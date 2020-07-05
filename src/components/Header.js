@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Header.css';
 import { connect } from 'react-redux';
 import { changeTitle } from '../redux/actions/clockActions';
+import AccountBox from './User/AccountBox';
 
 class Header extends Component {
     constructor(props){
@@ -118,6 +119,7 @@ class Header extends Component {
                             </div>
                         </div>
                     </div>
+                    <AccountBox />
                 </div>
             </div>
         )
@@ -125,6 +127,7 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => ({
+    app: state.app,
     alerts: state.alerts,
     clock: state.clock
 });

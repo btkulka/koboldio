@@ -1,8 +1,9 @@
 const COLORS = {
-    Info: '#0099cc',
-    InfoDim: '#d6f0fa',
+    CoolBlue: '#add8e6',
     Danger: '#CC0000',
     DangerDim: '#ffdada',
+    Info: '#0099cc',
+    InfoDim: '#d6f0fa',
     MidDanger: '#f2a365',
     MidDangerDim: '#fbe7d2',
     Warning: '#ff8800',

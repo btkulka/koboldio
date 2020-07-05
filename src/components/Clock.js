@@ -28,7 +28,6 @@ class Clock extends Component {
         this._tick = this._tick.bind(this);
         
         // public methods
-        this.onModeChanged = this.onModeChanged.bind(this);
         this.manipulateTime = this.manipulateTime.bind(this);
         this.load = this.load.bind(this);
     }
@@ -69,9 +68,6 @@ class Clock extends Component {
 
     // Public methods
     // =================================
-    onModeChanged(mode) {
-        this.props.changeTimeMode(mode);
-    }
 
     manipulateTime(time) {
         let tick = this._timeManager.convertToTick(time);
@@ -128,9 +124,6 @@ class Clock extends Component {
                         <div className="content-panel">
                             <ModeSelector
                                 title='Time mode'
-                                defaultMode={this.props.app.mode}
-                                onSelectionMade={this.onModeChanged}
-                                modes={this.timeModes}
                             />
                             <div className="header">
                                 <p>Day 

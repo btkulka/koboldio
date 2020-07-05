@@ -27,6 +27,14 @@
     letter-spacing: 2px;
 }
 
+.title-box {
+    flex: 0.6;
+}
+
+.account-box {
+    flex: 0.2;
+}
+
 .clock-title {
     font-family: 'Spectral';
     font-weight: medium;

@@ -37,11 +37,14 @@ import {
   faBars,
   faHome,
   faWindowMinimize,
-  faWindowMaximize
+  faWindowMaximize,
+  faSignInAlt,
+  faSignOutAlt
 } from '@fortawesome/free-solid-svg-icons';
 import CharacterManager from './components/Characters/CharacterManager';
 import PartyDashboard from './components/Characters/PartyDashboard';
 import CalendarDashboard from './components/Calendar/CalendarDashboard';
+import LoginPanel from './components/User/LoginPanel';
 
 library.add(
   faWindowClose, 
@@ -67,7 +70,9 @@ library.add(
   faHome,
   faClock,
   faWindowMinimize,
-  faWindowMaximize
+  faWindowMaximize,
+  faSignInAlt,
+  faSignOutAlt
 );
 
 class App extends Component {
@@ -89,6 +94,7 @@ class App extends Component {
 
   componentDidUpdate(prevProps) {
     const sessionState = {
+      app: this.props.app,
       clock: this.props.clock,
       location: this.props.location,
       weather: this.props.weather,
@@ -118,6 +124,9 @@ class App extends Component {
             }
           </div>
           <div className="middle-col">
+            <LoginPanel
+              visible={this.props.app.mode === APP_MODES.Login}
+            />
             <Clock
               visible={this.props.app.mode === APP_MODES.Clock}
             />

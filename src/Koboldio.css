@@ -1,5 +1,7 @@
 :root {
-    --danger: #CC0000;
+    --cool-blue: #add8e6;
+    --cool-blue-dim: rgba(173, 216, 230, 0.55);
+    --danger: #8b0000;
     --danger-dim: #ffdada;
     --info: #0099cc;
     --info-dim: #d6f0fa;
@@ -20,6 +22,13 @@ h3 {
     font-weight: 500;
     letter-spacing: 3px;
     font-size: 1.25em;
+}
+
+h4 {
+    font-family: 'Spectral';
+    font-weight: 400;
+    letter-spacing: 3px;
+    font-size: 0.75em;
 }
 
 label {
@@ -295,6 +304,18 @@ label {
     color: #cab287;
 }
 
+
+.kb-error-label {
+    border: 2px ridge var(--danger);
+    border-radius: 8px;
+    padding: 8px;
+    font-family: 'Spectral';
+    font-style: italic;
+    color: var(--danger-dim);
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
 .kb-event-listing {
     border-radius: 32px;
     font-family: 'Spectral';
@@ -418,16 +439,14 @@ label {
     letter-spacing: 3px;
     border-radius: 8px;
     color: white;
+    margin: 8px
 }
 
 .kb-input:focus {
     outline: none;
     box-shadow: 0 0 3px 2px rgba(173, 216, 230, 0.55);
     background-color: rgba(255,255,255,0.11);
-}
-
-.kb-input.required {
-    box-shadow: 0 0 3px 2px rgba(173, 216, 230, 0.55);
+    color: white;
 }
 
 .kb-input:hover {
@@ -441,6 +460,14 @@ label {
 
 .kb-input.kb-dirty:focus {
     box-shadow: 0px 0px 3px 3px var(--danger);
+}
+
+.kb-input.required {
+    box-shadow: 0 0 3px 2px rgba(173, 216, 230, 0.55);
+}
+
+.kb-input.long {
+    min-width: 300px;
 }
 
 .kb-flex-fill {

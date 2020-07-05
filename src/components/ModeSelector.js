@@ -1,33 +1,28 @@
 import React, { Component } from 'react';
 import './ModeSelector.css';
+import { connect } from 'react-redux';
+import TIME_MODES from '../constants/TimeModes';
+import { changeTimeMode } from '../redux/actions/clockActions';
 
-export default class ModeSelector extends Component {
+class ModeSelector extends Component {
     constructor(props){
         super(props);
 
-        this.state = {
-            mode: props.modes[props.defaultMode] ? props.modes[props.defaultMode] : props.modes[0]
-        }
+        this.state = { }
 
         this._makeSelection = this._makeSelection.bind(this);
     }
 
     _makeSelection(mode) {
-        this.setState({
-            mode: mode
-        }, () => {
-            if (this.props.onSelectionMade) {
-                this.props.onSelectionMade(this.state.mode);
-            }
-        });
+        this.props.changeTimeMode(mode);
     }
 
     render() {
 
         let options = [];
-        this.props.modes.forEach((mode) => {
+        Object.keys(TIME_MODES).forEach((mode) => {
             let className = "pill";
-            if (mode === this.state.mode) {
+            if (TIME_MODES[mode] === this.props.clock.mode) {
                 className += "-selected";
             }
             options.push(
@@ -35,11 +30,11 @@ export default class ModeSelector extends Component {
                     key={mode}
                     className={className}
                     onClick={() => {
-                        this._makeSelection(mode);
+                        this._makeSelection(TIME_MODES[mode]);
                     }}
                 >
                     <p>
-                        { mode }
+                        { TIME_MODES[mode] }
                     </p>
                 </div>
             );
@@ -56,3 +51,15 @@ export default class ModeSelector extends Component {
         );
     }
 }
+
+const mapStateToProps = (state) => ({
+    clock: state.clock
+});
+
+function mapDispatchToProps(dispatch) {
+    return {
+        changeTimeMode: (mode) => dispatch(changeTimeMode(mode))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ModeSelector);

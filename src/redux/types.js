@@ -1,6 +1,10 @@
 // App Actions
 export const CHANGE_APP_MODE = "CHANGE_APP_MODE";
 export const LOAD_SESSION_STATE = "LOAD_SESSION_STATE";
+export const REGISTER_USER = "REGISTER_USER";
+export const LOG_IN = "LOG_IN";
+export const LOG_OUT = "LOG_OUT";
+export const SET_USER = "SET_USER";
 
 // Clock Actions
 export const MANIPULATE_TIME = "MANIPULATE_TIME";

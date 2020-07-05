@@ -327,12 +327,15 @@ class Menu extends Component {
                             icon="clock"
                         />
                     </div>
-                    <div
-                        className={"menu-option " + (this.state.isFileDropdownOpen ? 'selected' : '')}
-                        onClick={this._toggleFileDropdownMenu}
-                    >
-                        File
-                    </div>
+                    {
+                        this.props.app.user &&
+                        <div
+                            className={"menu-option " + (this.state.isFileDropdownOpen ? 'selected' : '')}
+                            onClick={this._toggleFileDropdownMenu}
+                        >
+                            File
+                        </div>
+                    }
                     {   this.props.clock.id &&  // game has been saved
                         <div
                             className={"menu-option " + (this.state.isResourceDropdownOpen ? 'selected' : '')}
@@ -437,6 +440,7 @@ class Menu extends Component {
 }
 
 const mapStateToProps = (state) => ({
+    app: state.app,
     menu: state.menu,
     clock: state.clock,
     location: state.location,

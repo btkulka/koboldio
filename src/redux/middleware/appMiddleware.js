@@ -7,12 +7,26 @@ import {
     SET_WEATHER,
     LOAD_CHARACTERS,
     SET_PARTY_STATE,
-    SET_EVENTS
+    SET_EVENTS,
+    REGISTER_USER,
+    SET_USER,
+    LOG_OUT,
+    LOG_IN,
+    CHANGE_APP_MODE
 } from '../types';
+import UserClient from '../../clients/UserClient';
+import { APP_MODES } from '../../constants/AppModes';
+const jwt = require("jsonwebtoken");
 
-export const appMiddleware = store => next => action => {
+export const appMiddleware = store => next => async action => {
     if (action.type === LOAD_SESSION_STATE) {
-        // set clock state
+        // APP HANDLING ========================================
+        store.dispatch({
+            type: SET_USER,
+            payload: action.payload.app?.user
+        });
+        
+        // CLOCK HANDLING ======================================
         store.dispatch({
             type: LOAD_CLOCK_STATE,
             payload: action.payload.clock
@@ -60,6 +74,46 @@ export const appMiddleware = store => next => action => {
             store.dispatch({
                 type: SET_EVENTS,
                 payload: action.payload.calendar
+            });
+        }
+    } else if (action.type === REGISTER_USER) {
+        const userClient = new UserClient();
+        let user = action.payload;
+        const registerResponse = await userClient.createUser(user);
+
+        if (registerResponse._id) {
+            user.id = registerResponse._id;
+            const token = await userClient.logIn(user);
+            if (token) {
+                user.token = token;
+                store.dispatch({
+                    type: SET_USER,
+                    payload: user
+                });
+            }
+        }
+    } else if (action.type === LOG_OUT) {
+        store.dispatch({
+            type: SET_USER,
+            payload: undefined
+        });
+        store.dispatch({
+            type: CHANGE_APP_MODE,
+            payload: APP_MODES.Clock
+        });
+    } else if (action.type === LOG_IN) {
+        const userClient = new UserClient();
+        const { token } = await userClient.logIn(action.payload);
+        if (token) {
+            let user = jwt.decode(token);
+            user.token = token;
+            store.dispatch({
+                type: SET_USER,
+                payload: user
+            });
+            store.dispatch({
+                type: CHANGE_APP_MODE,
+                payload: APP_MODES.Clock
             });
         }
     }
